@@ -1,26 +1,51 @@
 import { Injectable } from '@nestjs/common';
+import { Board } from '@prisma/client';
+import { PrismaService } from '../@shared/prisma/prisma.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
 
 @Injectable()
 export class BoardService {
-  create(createBoardDto: CreateBoardDto) {
-    return 'This action adds a new board';
+
+  constructor(
+    private prisma: PrismaService
+  ) { }
+
+  async create(data: CreateBoardDto): Promise<Board> {
+    // check if user exists
+    const user = await this.prisma.user.findUnique({ where: { id: data.ownerId } });
+
+    if (!user) {
+      throw new Error("user-not-found");
+    }
+
+    return await this.prisma.board.create({ data })
   }
 
-  findAll() {
-    return `This action returns all board`;
+  async findAll(ownerId: number): Promise<Board[]> {
+    return await this.prisma.board.findMany({ where: { ownerId } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} board`;
+  async findOne(id: number, ownerId: number) {
+    const board = await this.prisma.board.findUnique({ where: { id } });
+
+    if (!board) {
+      throw new Error('board-not-found')
+    }
+
+
+    if (board.ownerId !== ownerId) {
+      throw new Error('board-not-owned')
+    }
+
+    return board;
   }
 
-  update(id: number, updateBoardDto: UpdateBoardDto) {
-    return `This action updates a #${id} board`;
+  async update(id: number, ownerId: number, data: UpdateBoardDto) {
+    return await this.prisma.board.updateMany({ where: { id, ownerId }, data });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} board`;
+  async remove(id: number, ownerId: number) {
+    return await this.prisma.board.deleteMany({ where: { id, ownerId } });
   }
 }
