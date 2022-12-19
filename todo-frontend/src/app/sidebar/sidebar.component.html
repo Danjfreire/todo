@@ -1,0 +1,17 @@
+<div class="sidebar-body">
+
+    <div class="user-container">
+        <div class="user"></div>
+        <div class="sidebar-retract-btn" (click)="collapse()">
+            <i class="fa-solid fa-angles-left"></i>
+        </div>
+    </div>
+
+    <div class="board-container">
+        <div class="board" *ngFor="let board of boards">
+            {{board.name}}
+        </div>
+
+    </div>
+
+</div>

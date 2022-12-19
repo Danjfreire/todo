@@ -1,0 +1,42 @@
+.sidebar-body {
+    height: 100%;
+    border-right: 1px solid grey;
+}
+
+.user-container {
+    display: flex;
+    height: 3rem;
+    border-bottom: 1px solid grey;
+    padding: 0rem 0.25rem;
+    align-items: center;
+}
+
+.user {
+    flex-basis: 4;
+    flex-grow: 999;
+}
+
+.sidebar-retract-btn {
+    flex-basis: 1;
+    flex-grow: 1;
+    font-size: 1rem;
+    cursor: pointer;
+    color: lightgray;
+}
+
+.sidebar-retract-btn:hover {
+    background-color: aliceblue;
+}
+
+.board-container {
+    height: calc(100% - 5rem);   
+}
+
+.board {
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+}
+
+.board:hover {
+    background-color: aliceblue;
+}
