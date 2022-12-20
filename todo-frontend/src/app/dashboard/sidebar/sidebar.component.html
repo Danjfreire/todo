@@ -1,10 +1,8 @@
-<div class="sidebar-body">
+<nav class="sidebar-body">
 
     <div class="user-container">
         <div class="user"></div>
-        <div class="sidebar-retract-btn" (click)="collapse()">
-            <i class="fa-solid fa-angles-left"></i>
-        </div>
+        <app-sidebar-toggle-btn [collapse]="true"></app-sidebar-toggle-btn>
     </div>
 
     <div class="board-container">
@@ -14,4 +12,4 @@
 
     </div>
 
-</div>
+</nav>

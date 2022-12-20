@@ -16,18 +16,6 @@
     flex-grow: 999;
 }
 
-.sidebar-retract-btn {
-    flex-basis: 1;
-    flex-grow: 1;
-    font-size: 1rem;
-    cursor: pointer;
-    color: lightgray;
-}
-
-.sidebar-retract-btn:hover {
-    background-color: aliceblue;
-}
-
 .board-container {
     height: calc(100% - 5rem);   
 }

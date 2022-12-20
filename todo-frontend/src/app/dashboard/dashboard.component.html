@@ -1,9 +1,11 @@
 <div class="layout">
 
-  <app-sidebar [@toggleSidebar]="sidebarCollapsed ? 'collapsed' : 'open'" class="sidebar"
-    (sidebarCollapsed)="toggleSidebar($event)"></app-sidebar>
+  <app-sidebar [@toggleSidebar]="(isSidebarCollapsed() | async) ? 'collapsed' : 'open'" class="sidebar"></app-sidebar>
 
   <div class="content">
+    <div class="content-header">
+      <app-sidebar-toggle-btn *ngIf="isSidebarCollapsed() | async" [collapse]="false"></app-sidebar-toggle-btn>
+    </div>
 
     <router-outlet></router-outlet>
   </div>

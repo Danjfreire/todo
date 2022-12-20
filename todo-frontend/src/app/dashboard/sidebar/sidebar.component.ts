@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface Board {
   name: string;
@@ -11,11 +11,10 @@ interface Board {
 })
 export class SidebarComponent implements OnInit {
 
-  @Output() sidebarCollapsed = new EventEmitter<boolean>();
-
   boards: Board[];
 
-  constructor() { 
+  constructor(
+  ) { 
     this.boards = [
       {name : 'board 1'},
       {name : 'board 2'},
@@ -24,12 +23,6 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
   }
-
-  collapse() {
-    this.sidebarCollapsed.emit(true);
-  }
-
 
 }

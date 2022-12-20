@@ -2,3 +2,15 @@
 body {
     margin: 0;
 }
+
+.sidebar-retract-btn {
+    flex-basis: 1;
+    flex-grow: 1;
+    font-size: 1rem;
+    cursor: pointer;
+    color: lightgray;
+}
+
+.sidebar-retract-btn:hover {
+    background-color: aliceblue;
+}

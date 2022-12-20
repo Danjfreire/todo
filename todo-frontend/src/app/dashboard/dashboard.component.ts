@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
+import { SidebarService } from './sidebar/sidebar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,21 +12,25 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         marginLeft: 0
       })),
       state('collapsed', style({
-        position: 'relative',
         marginLeft: '-16rem'
       })),
-      transition('open => collapsed', [animate('0.4s')]),
-      transition('collapsed => open', [animate('0.4s')])
+      transition('open => collapsed', [animate('0.3s')]),
+      transition('collapsed => open', [animate('0.3s')])
     ])
   ]
 })
 export class DashboardComponent {
 
-  sidebarCollapsed = false;
+  constructor(
+    private sidebarService : SidebarService
+  ) { }
+
+  isSidebarCollapsed() {
+    return this.sidebarService.getSidebarStatus();
+  }
 
   toggleSidebar(collapsed: boolean) {
-    console.log(`Sidebar collapsed : ${collapsed}`)
-    this.sidebarCollapsed = collapsed;
-  }
+    this.sidebarService.toggleSidebar(collapsed);
+  } 
 
 }

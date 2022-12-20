@@ -15,3 +15,11 @@
     flex-grow: 999;
     min-width: 50%;
 }
+
+.content-header {
+    display: flex;
+    height: 3rem;
+    padding: 0rem 0.25rem;
+    align-items: center;
+}
+
