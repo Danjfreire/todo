@@ -28,3 +28,11 @@
 .board:hover {
     background-color: aliceblue;
 }
+
+.create-board-btn {
+    cursor: pointer;
+}
+
+.create-board-btn:hover {
+    background-color: aquamarine;
+}

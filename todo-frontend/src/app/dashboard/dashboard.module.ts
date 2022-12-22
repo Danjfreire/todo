@@ -4,8 +4,8 @@ import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
 import { BoardModule } from './board/board.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { SidebarToggleBtnComponent } from './@shared/sidebar-toggle-btn/sidebar-toggle-btn.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarToggleBtnComponent } from './@shared/components/sidebar-toggle-btn/sidebar-toggle-btn.component';
 
 
 

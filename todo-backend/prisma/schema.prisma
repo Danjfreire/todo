@@ -13,13 +13,13 @@ datasource db {
 model User {
   id     Int     @id @default(autoincrement())
   email  String  @unique
-  name   String?
+  name   String
   boards Board[]
 }
 
 model Board {
   id      Int    @id @default(autoincrement())
   name    String
-  ownerId Int?
-  owner   User?  @relation(fields: [ownerId], references: [id])
+  ownerId Int
+  owner   User  @relation(fields: [ownerId], references: [id])
 }

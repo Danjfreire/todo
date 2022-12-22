@@ -11,7 +11,10 @@ export class BoardController {
   @Post()
   async create(@Body() createBoardDto: CreateBoardDto) {
     try {
-      return await this.boardService.create(createBoardDto);
+     // change this to resolve the ownerId to the requester id
+    // solve with auth
+    const ownerId = 1; 
+      return await this.boardService.create(ownerId,createBoardDto);
     } catch (error) {
       if (error.message === 'user-not-found') throw new NotFoundException('user not found!');
     }

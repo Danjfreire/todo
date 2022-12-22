@@ -11,15 +11,15 @@ export class BoardService {
     private prisma: PrismaService
   ) { }
 
-  async create(data: CreateBoardDto): Promise<Board> {
+  async create(ownerId : number,data: CreateBoardDto, ): Promise<Board> {
     // check if user exists
-    const user = await this.prisma.user.findUnique({ where: { id: data.ownerId } });
+    const user = await this.prisma.user.findUnique({ where: { id: ownerId} });
 
     if (!user) {
       throw new Error("user-not-found");
     }
 
-    return await this.prisma.board.create({ data })
+    return await this.prisma.board.create({ data: {name : data.name, ownerId} })
   }
 
   async findAll(ownerId: number): Promise<Board[]> {

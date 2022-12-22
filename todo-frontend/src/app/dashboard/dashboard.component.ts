@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
-import { SidebarService } from './sidebar/sidebar.service';
+import { SidebarService } from './@shared/services/sidebar.service';
+import { BoardService } from './@shared/services/board.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,11 +20,16 @@ import { SidebarService } from './sidebar/sidebar.service';
     ])
   ]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
   constructor(
-    private sidebarService : SidebarService
+    private sidebarService : SidebarService,
+    private boardService : BoardService,
   ) { }
+
+  ngOnInit(): void {
+    this.boardService.loadBoards();
+  }
 
   isSidebarCollapsed() {
     return this.sidebarService.getSidebarStatus();
