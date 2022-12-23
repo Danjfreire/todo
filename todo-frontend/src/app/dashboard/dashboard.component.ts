@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { SidebarService } from './@shared/services/sidebar.service';
 import { BoardService } from './@shared/services/board.service';
+import { Observable } from 'rxjs';
+import { Board } from './@shared/models/board.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +24,8 @@ import { BoardService } from './@shared/services/board.service';
 })
 export class DashboardComponent implements OnInit{
 
+  currentBoard : Observable<Board | null>;
+
   constructor(
     private sidebarService : SidebarService,
     private boardService : BoardService,
@@ -29,6 +33,7 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.boardService.loadBoards();
+    this.currentBoard = this.boardService.getCurrentBoard();
   }
 
   isSidebarCollapsed() {

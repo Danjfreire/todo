@@ -18,6 +18,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private boardService: BoardService, private router: Router) { }
 
   ngOnInit(): void {
+    this.subscription = new Subscription();
     const boardsSub = this.boardService.getBoards()
       .subscribe({ next: (boards => this.boards = boards) })
 
@@ -25,7 +26,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       .subscribe({next : (board => {
         if(board) {
           this.selectedBoard = board;
-          this.router.navigate([`board/${board.id}`]);
+          // this.router.navigate([`board/${board.id}`]);
         }
       })})
     this.subscription.add(boardsSub);
@@ -39,5 +40,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   createBoard() {
     const defaultBoard = { name: 'New Board' };
     this.boardService.createBoard(defaultBoard);
+  }
+
+  selectBoard(board : Board){
+    this.boardService.setCurrentBoard(board);
   }
 }

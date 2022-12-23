@@ -1,1 +1,4 @@
-<p>board works!</p>
+<div class="board-container">
+    <input *ngIf="board" type="text" class="board-name" [formControl]="name">
+    <div class="board-content"></div>
+</div>

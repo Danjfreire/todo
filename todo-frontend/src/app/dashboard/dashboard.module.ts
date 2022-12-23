@@ -19,7 +19,7 @@ import { SidebarToggleBtnComponent } from './@shared/components/sidebar-toggle-b
     CommonModule,
     RouterModule,
     BoardModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
   ]
 })
 export class DashboardModule { }

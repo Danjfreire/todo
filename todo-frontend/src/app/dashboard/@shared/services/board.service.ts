@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Board, CreateBoardDTO } from '../models/board.model';
+import { Board, CreateBoardDTO, UpdateBoardDTO } from '../models/board.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class BoardService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
   ) { }
 
   getBoards() {
@@ -24,8 +26,9 @@ export class BoardService {
     return this.currentBoard.asObservable();
   }
 
-  setCurrentBoard(board : Board){
+  setCurrentBoard(board: Board) {
     this.currentBoard.next(board);
+    this.router.navigate([`board/${board.id}`]);
   }
 
   loadBoards() {
@@ -33,7 +36,7 @@ export class BoardService {
       .subscribe({
         next: (boards) => {
           this.boards.next(boards)
-          if(this.boards.value.length > 0){
+          if (this.boards.value.length > 0) {
             this.setCurrentBoard(boards[0]);
           }
           // this.router.navigate([`board/${moveTo ?? this.boards[0].id}`])
@@ -50,4 +53,13 @@ export class BoardService {
       });
   }
 
+  updateBoard(boardId: number, data: UpdateBoardDTO) {
+    return this.http.put<void>(`${environment.apiUrl}/board/${boardId}`, { ...data })
+      .subscribe(res => {
+        let index = this.boards.value.findIndex(board => board.id === boardId);
+       if(index > -1) {
+        this.boards.value[index].name = data.name;
+       }
+      })
+  }
 }
