@@ -6,10 +6,10 @@
     </div>
 
     <div class="board-container">
-        <div class="board" *ngFor="let board of boards" (click)="selectBoard(board)">
+        <div [ngClass]="{'selected': selectedBoard && board.id === selectedBoard.id}" class="board" *ngFor="let board of boards" (click)="selectBoard(board)">
             {{board.name}}
         </div>
-        <div class="create-board-btn" (click)="createBoard()">+ New Board</div>
+        <div class="create-board-btn" (click)="createBoard()"><i class="fa-solid fa-plus"></i> New Board</div>
     </div>
 
 </nav>

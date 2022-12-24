@@ -1,0 +1,11 @@
+
+.sidebar-retract-btn {
+    padding: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.sidebar-retract-btn:hover {
+    background-color: var(--hover-color);
+}

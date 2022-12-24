@@ -1,16 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root{
+    --primary-color : #FFFFFF;
+    --secondary-color : #FBFBFA;
+    --focus-color : #EBEBEA;
+    --hover-color : #E2E2E1;
+    --text-color : #37352F;
+    --border-color : #E9E9E7;
+}
+
 body {
     margin: 0;
+    font-family: Helvetica,sans-serif ;
+    color: var(--text-color);
 }
 
-.sidebar-retract-btn {
-    flex-basis: 1;
-    flex-grow: 1;
-    font-size: 1rem;
-    cursor: pointer;
-    color: lightgray;
-}
-
-.sidebar-retract-btn:hover {
-    background-color: aliceblue;
-}
