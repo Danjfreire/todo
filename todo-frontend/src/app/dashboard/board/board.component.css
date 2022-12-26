@@ -2,6 +2,13 @@
     padding: 0 5rem;
 }
 
+.board-content{
+    padding: 2rem 0 0 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+}
+
 .board-name {
     font-size: 2rem;
     font-weight: 700;

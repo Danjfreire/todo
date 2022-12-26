@@ -1,0 +1,21 @@
+.lane-container {
+    background-color: var(--secondary-color);
+    width: 12rem;
+    height: 700px;
+    border: 1px solid var(--border-color);
+}
+
+.lane-header {
+    font-weight: 600;
+    padding: 0.25rem 1rem;
+}
+
+.create-task-btn {
+    cursor: pointer;
+    padding: 0.25rem 1rem;
+    font-weight: 400;
+}
+
+.create-task-btn:hover {
+    background-color: var(--hover-color);
+}
