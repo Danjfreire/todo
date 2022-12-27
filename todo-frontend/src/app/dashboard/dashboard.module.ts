@@ -13,7 +13,7 @@ import { SidebarToggleBtnComponent } from './@shared/components/sidebar-toggle-b
   declarations: [
     DashboardComponent,
     SidebarToggleBtnComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     CommonModule,

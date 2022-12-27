@@ -15,8 +15,10 @@ export class TaskController {
   }
 
   @Get()
-  findAll() {
-    return this.taskService.findAll();
+  findAll(
+    @Param('boardId') boardId : string,
+  ) {
+    return this.taskService.findAll(+boardId);
   }
 
   @Get(':id')

@@ -10,14 +10,14 @@ export class TaskService {
 
   constructor(
     private prisma: PrismaService,
-  ) {}
+  ) { }
 
-  async create(boardId : number, data: CreateTaskDto) : Promise<Task>{
-    return await this.prisma.task.create({data : {boardId, ...data}})
+  async create(boardId: number, data: CreateTaskDto): Promise<Task> {
+    return await this.prisma.task.create({ data: { boardId, ...data } })
   }
 
-  findAll() {
-    return `This action returns all task`;
+  async findAll(boardId: number) {
+    return await this.prisma.task.findMany({ where: { boardId } });
   }
 
   findOne(id: number) {

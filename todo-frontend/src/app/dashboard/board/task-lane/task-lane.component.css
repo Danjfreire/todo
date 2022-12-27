@@ -1,18 +1,29 @@
 .lane-container {
     background-color: var(--secondary-color);
-    width: 12rem;
-    height: 700px;
+    width: 16.5rem;
     border: 1px solid var(--border-color);
+    padding: 0.25rem 0;
 }
+
 
 .lane-header {
     font-weight: 600;
     padding: 0.25rem 1rem;
 }
 
+.lane-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
 .create-task-btn {
     cursor: pointer;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    width: 16rem;
+    box-sizing: border-box;
     font-weight: 400;
 }
 

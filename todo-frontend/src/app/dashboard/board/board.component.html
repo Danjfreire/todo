@@ -1,6 +1,6 @@
 <div class="board-container">
     <input *ngIf="board" type="text" class="board-name" [formControl]="name">
     <div class="board-content">
-        <app-task-lane></app-task-lane>
+        <app-task-lane status="backlog" [tasks]="tasks | taskStatus:'backlog'"></app-task-lane>
     </div>
 </div>

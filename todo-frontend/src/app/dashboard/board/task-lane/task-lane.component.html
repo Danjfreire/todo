@@ -1,6 +1,8 @@
 <div class="lane-container">
     <div class="lane-header">Backlog</div>
     <div class="lane-body">
+        <app-task-card *ngFor="let task of tasks" [task]="task">
+        </app-task-card>
         <div class="create-task-btn" (click)="createTask()"><i class="fa-solid fa-plus"></i> New</div>
     </div>
 </div>

@@ -1,0 +1,16 @@
+.card-body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    padding: 0.25rem;
+    font-weight: 600;
+    width: 16rem;
+    height: 6rem;
+    cursor: pointer;
+}
+
+.card-body:hover {
+    background-color: var(--hover-color);
+}
