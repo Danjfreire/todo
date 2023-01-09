@@ -9,4 +9,14 @@ import { Task } from '../../@shared/models/task.model';
 export class TaskCardComponent {
 
   @Input() task : Task;
+
+  isHovered = false;
+
+  over() {
+    this.isHovered = true;
+  }
+
+  out() {
+    this.isHovered = false;
+  }
 }

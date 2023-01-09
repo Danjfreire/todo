@@ -9,8 +9,37 @@
     width: 16rem;
     height: 6rem;
     cursor: pointer;
+    position: relative;
 }
 
 .card-body:hover {
+    background-color: var(--focus-color);
+}
+
+.action-bar {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 3.5rem;
+    /* border-radius: 0.25rem;: */
+    height: 1.5rem;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
+
+.action-btn:first-child {
+    /* border-right: 1px solid var(--border-color); */
+}
+
+.action-btn {
+    padding: 0.25rem;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.action-btn:hover {
     background-color: var(--hover-color);
 }

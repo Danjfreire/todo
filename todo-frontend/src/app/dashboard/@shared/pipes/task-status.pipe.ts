@@ -7,7 +7,11 @@ import { Task, TaskStatus } from '../models/task.model';
 export class TaskStatusPipe implements PipeTransform {
 
   transform(value : Task[], status : TaskStatus): Task[] {
-    return value.filter(task => task.status === status);
+    if(value) {
+      return value.filter(task => task.status === status);
+    }
+    
+    return [];
   }
 
 }

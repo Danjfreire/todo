@@ -1,3 +1,7 @@
-<div class="card-body">
+<div class="card-body" (mouseover)="over()" (mouseleave)="out()">
     {{task.title}}
+    <div *ngIf="isHovered" class="action-bar">
+        <div class="action-btn"><i class="fa-solid fa-pen"></i></div>
+        <div class="action-btn"><i class="fa-solid fa-trash"></i></div>
+    </div>
 </div>
