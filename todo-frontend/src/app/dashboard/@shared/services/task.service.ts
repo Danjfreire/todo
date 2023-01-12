@@ -74,4 +74,23 @@ export class TaskService {
       })
     return this.tasks.asObservable();
   }
+
+  deleteTask(task : Task) {
+    // remove task fast and make request
+    if(!this.tasks.value) {
+      return;
+    }
+    const previousTasks = [...this.tasks.value];
+    const filteredTasks = this.tasks.value.filter(tsk => tsk.id !== task.id);
+    this.tasks.next(filteredTasks)
+    this.http.delete(`${environment.apiUrl}/board/${task.boardId}/task/${task.id}`)
+    .subscribe({
+      next : (task) => {},
+      error : (err) => {
+        // show some error
+        console.log(err);
+        this.tasks.next(previousTasks);
+      }
+    })
+  }
 }

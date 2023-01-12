@@ -1,6 +1,5 @@
 import { IsEnum, IsOptional, IsString } from "class-validator";
-
-const validStatus = ['backlog', 'doing', 'closed']
+import { TaskStatus, validStatus } from "../model/task-status.model";
 
 export class CreateTaskDto {
 
@@ -8,7 +7,7 @@ export class CreateTaskDto {
     title : string;
 
     @IsEnum(validStatus)
-    status : string;
+    status : TaskStatus;
 
     @IsOptional()
     @IsString()
