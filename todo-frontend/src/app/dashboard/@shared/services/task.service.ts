@@ -33,8 +33,8 @@ export class TaskService {
     }
   }
 
-  private removeTask(taskId : number) {
-    if(this.tasks.value) {
+  private removeTask(taskId: number) {
+    if (this.tasks.value) {
       this.tasks.next(this.tasks.value.filter(task => task.id !== taskId));
     }
   }
@@ -75,22 +75,57 @@ export class TaskService {
     return this.tasks.asObservable();
   }
 
-  deleteTask(task : Task) {
+  deleteTask(task: Task) {
     // remove task fast and make request
-    if(!this.tasks.value) {
+    if (!this.tasks.value) {
       return;
     }
     const previousTasks = [...this.tasks.value];
     const filteredTasks = this.tasks.value.filter(tsk => tsk.id !== task.id);
     this.tasks.next(filteredTasks)
     this.http.delete(`${environment.apiUrl}/board/${task.boardId}/task/${task.id}`)
-    .subscribe({
-      next : (task) => {},
-      error : (err) => {
-        // show some error
-        console.log(err);
-        this.tasks.next(previousTasks);
-      }
-    })
+      .subscribe({
+        next: (task) => { },
+        error: (err) => {
+          // show some error
+          console.log(err);
+          this.tasks.next(previousTasks);
+        }
+      })
+  }
+
+  updateTask(taskId: number, boardId: number, data: CreateTaskDTO) {
+    let oldValue: Task;
+    if (this.tasks.value) {
+      oldValue = this.tasks.value.find(tsk => tsk.id === taskId) as Task
+    }
+
+    // this.tasks.next(this.tasks.value?.map(tsk => {
+    //   if (tsk.id === taskId) {
+    //     return {
+    //       boardId: tsk.boardId,
+    //       id: taskId,
+    //       status: data.status,
+    //       title: data.title,
+    //       description: data.description
+    //     }
+    //   }
+    //   return tsk;
+    // }) ?? []);
+
+    this.http.put(`${environment.apiUrl}/board/${boardId}/task/${taskId}`, { ...data })
+      .subscribe({
+        next: () => { },
+        error: (err) => {
+          // show some error
+          console.log(err)
+          this.tasks.next(this.tasks.value?.map(tsk => {
+            if (tsk.id === taskId) {
+              return oldValue;
+            }
+            return tsk
+          }) ?? []);
+        }
+      })
   }
 }

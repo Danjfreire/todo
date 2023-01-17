@@ -8,31 +8,26 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Post()
-  create(
+  async create(
     @Param('boardId') boardId : string,
     @Body() createTaskDto: CreateTaskDto) {
-    return this.taskService.create(+boardId,createTaskDto);
+    return await this.taskService.create(+boardId,createTaskDto);
   }
 
   @Get()
-  findAll(
+  async findAll(
     @Param('boardId') boardId : string,
   ) {
-    return this.taskService.findAll(+boardId);
+    return await this.taskService.findAll(+boardId);
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.taskService.findOne(+id);
-  // }
-
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.update(+id, updateTaskDto);
+  async update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
+    await this.taskService.update(+id, updateTaskDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.taskService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.taskService.remove(+id);
   }
 }

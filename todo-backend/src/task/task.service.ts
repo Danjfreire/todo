@@ -20,8 +20,7 @@ export class TaskService {
   }
 
   async update(id: number, data: UpdateTaskDto) {
-    await this.prisma.task.updateMany({ where: { id }, data })
-    return `This action updates a #${id} task`;
+    return await this.prisma.task.updateMany({ where: { id }, data })
   }
 
   async remove(id: number) {
